@@ -21,12 +21,12 @@ class CommentController extends Controller
         }
     }
 
-    function update($id, Request $request)
+    function update(Request $request)
     {
-        $comment = new Comment();
+        $comment = Comment::find($request->id);
         $comment->name = $request->name;
         $comment->comment = $request->comment;
-        $comment->book_id = $id;
+        $comment->book_id = $request->book_id;
         $result = $comment->save();
         if ($result) {
             return  ["Result" => "data has been update"];
@@ -35,9 +35,9 @@ class CommentController extends Controller
         }
     }
 
-    function delete($id)
+    function delete(Request $request)
     {
-        $data = Comment::find($id);
+        $data = Comment::find($request->id);
         $result = $data->delete();
         if ($result) {
             return  ["Result" => "data has been deleted"];

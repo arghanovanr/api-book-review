@@ -20,13 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //CRUD Book
-Route::get("Book/{id?}", [BookController::class, 'index']);
-Route::get("Book/Comment/{id}", [BookController::class, 'comment']);
-Route::post("Book", [BookController::class, 'store']);
-Route::put("Book/{id}", [BookController::class, 'update']);
-Route::delete("Book/{id}", [BookController::class, 'delete']);
+Route::get("Book/{id?}", [BookController::class, 'index']);             // Take all book data
+Route::get("Book/Comment/{id}", [BookController::class, 'comment']);    // Take all comment from spesific book
+Route::post("Book", [BookController::class, 'store']);                  // Store book data
+Route::put("Book/{id}", [BookController::class, 'update']);             // Update book data
+Route::delete("Book/{id}", [BookController::class, 'delete']);          // Delete book data
 
 //CRUD Comment
-Route::post("Comment", [CommentController::class, 'store']);
-Route::put("Comment/{id}", [BookController::class, 'update']);
-Route::delete("Comment/{id}", [BookController::class, 'delete']);
+Route::post("Comment", [CommentController::class, 'store']);            // Store comment data to spesific book
+Route::put("Comment", [CommentController::class, 'update']);            // Update comment data to spesific book
+Route::delete("Comment", [CommentController::class, 'delete']);         // Delete comment data to spesific book
